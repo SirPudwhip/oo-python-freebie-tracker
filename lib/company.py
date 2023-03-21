@@ -5,7 +5,7 @@ class Company:
 
     all = []
     lowest_year = 2023
-    oldest_company = []
+    oldest_co = []
 
     def __init__(self, name_string, founding_year):
         self.name = name_string
@@ -15,7 +15,7 @@ class Company:
 
         if self.year < Company.lowest_year:
             Company.lowest_year = self.year
-            Company.oldest_company = self
+            Company.oldest_co = self
         
     @property
     def freebies(self):
@@ -37,7 +37,7 @@ class Company:
     @classmethod
     def oldest_company(cls):
 
-        return cls.oldest_company
+        return cls.oldest_co.name
 
         # print(cls.all.sort(key = cls.get_key))
         
