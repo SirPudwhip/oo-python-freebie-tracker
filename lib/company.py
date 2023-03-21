@@ -4,6 +4,8 @@ from .freebie import Freebie
 class Company:
 
     all = []
+    lowest_year = 2023
+    oldest_company = []
 
     def __init__(self, name_string, founding_year):
         self.name = name_string
@@ -11,6 +13,10 @@ class Company:
 
         Company.all.append(self)
 
+        if self.year < Company.lowest_year:
+            Company.lowest_year = self.year
+            Company.oldest_company = self
+        
     @property
     def freebies(self):
         
@@ -24,9 +30,16 @@ class Company:
     def give_freebie(self, dev, item_name, value):
 
         Freebie(dev, self, item_name, value)
+
+    def get_key(self):
+        return self.year
     
     @classmethod
     def oldest_company(cls):
+
+        return cls.oldest_company
+
+        # print(cls.all.sort(key = cls.get_key))
         
         # company_list = []
 
@@ -40,15 +53,15 @@ class Company:
 
         # This DEFINITELY needs to be refactored 
 
-        company_list = [c.year for c in cls.all]
+        # company_list = [c.year for c in cls.all]
 
-        oldest_company = []
+        # oldest_company = []
 
-        for c in cls.all:
-            if c.year == sorted(company_list)[0]:
-                oldest_company.append(c)
+        # for c in cls.all:
+        #     if c.year == sorted(company_list)[0]:
+        #         oldest_company.append(c)
 
-        return oldest_company[0]
+        # return oldest_company[0]
         ##################################
 
-        # print(cls.all.sort(key = getattr("year")).year)
+        
